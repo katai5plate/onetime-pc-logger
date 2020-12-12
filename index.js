@@ -23,7 +23,6 @@ const run = () => {
     exec("tasklist -v"),
   ].join("\n");
   writeFileSync("./onetime.log", log);
-  console.log(`Saved at ${new Date()}`);
 };
 
 console.log("START!");
