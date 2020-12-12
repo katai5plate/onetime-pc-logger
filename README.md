@@ -28,3 +28,7 @@
   - `nvidia-smi`
 - タスクリスト
   - `tasklist -v`
+
+## memo
+
+CPU 使用率があまり正確じゃない気がする。typeperf のほうがいいかも
