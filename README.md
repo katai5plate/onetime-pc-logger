@@ -23,12 +23,9 @@
 - CPU 温度
   - `wmic /namespace:\\root\wmi PATH MSAcpi_ThermalZoneTemperature get CurrentTemperature`
 - CPU 使用率
-  - `wmic CPU get loadpercentage`
+  - ~~`wmic CPU get loadpercentage`~~
+  - `typeperf -sc 1 "\processor(_Total)\% Processor Time"`
 - GPU 状況
   - `nvidia-smi`
 - タスクリスト
   - `tasklist -v`
-
-## memo
-
-CPU 使用率があまり正確じゃない気がする。typeperf のほうがいいかも

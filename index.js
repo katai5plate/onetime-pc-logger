@@ -16,7 +16,7 @@ const run = () => {
       "wmic /namespace:\\\\root\\wmi PATH MSAcpi_ThermalZoneTemperature get CurrentTemperature"
     ),
     "-- CPU Usage --",
-    exec("wmic CPU get loadpercentage"),
+    exec('typeperf -sc 1 "\\processor(_Total)\\% Processor Time"'),
     "-- GPU --",
     exec("nvidia-smi"),
     "-- Tasks --",
