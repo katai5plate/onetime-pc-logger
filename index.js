@@ -9,8 +9,11 @@ const exec = (code) =>
     type: "string",
   });
 
+const EMPTY = "<<< EMPTY >>>";
+let log = (prelog = EMPTY);
 const run = () => {
-  const log = [
+  prelog = log;
+  log = [
     "-- CPU Temperature --",
     exec(
       "wmic /namespace:\\\\root\\wmi PATH MSAcpi_ThermalZoneTemperature get CurrentTemperature"
@@ -23,8 +26,17 @@ const run = () => {
     exec("tasklist -v -fo csv"),
   ].join("\n");
   writeFileSync("./onetime.log", log);
+  writeFileSync("./onetime.prev.log", prelog);
 };
 
 console.log("START!");
 run();
-setInterval(run, 3000);
+const i = setInterval(() => {
+  try {
+    run();
+  } catch (error) {
+    writeFileSync("./onetime.preerror.log", log);
+    writeFileSync("./onetime.error.log", `${new Date()}\n${error}`);
+    clearInterval(i);
+  }
+}, 3000);
