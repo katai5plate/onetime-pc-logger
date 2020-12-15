@@ -20,11 +20,11 @@ const run = () => {
     "-- GPU --",
     exec("nvidia-smi"),
     "-- Tasks --",
-    exec("tasklist -v"),
+    exec("tasklist -v -fo csv"),
   ].join("\n");
   writeFileSync("./onetime.log", log);
 };
 
 console.log("START!");
 run();
-setInterval(run, 5000);
+setInterval(run, 3000);
