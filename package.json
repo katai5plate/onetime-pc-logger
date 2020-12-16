@@ -5,6 +5,7 @@
   "repository": "git@github.com:katai5plate/onetime-pc-logger.git",
   "license": "MIT",
   "dependencies": {
-    "encoding-japanese": "^1.0.30"
+    "encoding-japanese": "^1.0.30",
+    "papaparse": "^5.3.0"
   }
 }
