@@ -44,6 +44,7 @@ const run = () => {
       );
     })(),
   ].join("\n");
+  if (/\x00{1000}/.test(log)) throw new Error("無効なログ");
   writeFileSync("./onetime.log", log);
   writeFileSync("./onetime.prev.log", prelog);
 };
@@ -54,6 +55,7 @@ const i = setInterval(() => {
   try {
     run();
   } catch (error) {
+    console.log("ERROR!");
     writeFileSync("./onetime.preerror.log", log);
     writeFileSync("./onetime.error.log", `${new Date()}\n${error}`);
     clearInterval(i);
